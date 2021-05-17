@@ -5,7 +5,7 @@ namespace Runroom\GildedRose;
 
 class BackstagePassItem extends Item {
 
-    public function updateItem() 
+    public function updateItem(): void
     {
         $this->increaseQualityForBackstagePass();                      
         $this->decreaseSellInBy(1);  
@@ -15,7 +15,7 @@ class BackstagePassItem extends Item {
         } 
     }
 
-    public function increaseQualityForBackstagePass()
+    public function increaseQualityForBackstagePass(): void
     {
        
         $this->increaseQualityBy(1);

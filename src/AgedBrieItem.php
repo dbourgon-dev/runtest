@@ -5,7 +5,7 @@ namespace Runroom\GildedRose;
 
 class AgedBrieItem extends Item {
 
-    public function updateItem() 
+    public function updateItem(): void
     {
         $this->increaseQualityBy(1);
         $this->decreaseSellInBy(1);

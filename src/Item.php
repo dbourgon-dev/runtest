@@ -11,18 +11,18 @@ class Item {
     public int $sell_in;
     public int $quality;
 
-    function __construct($name, $sell_in, $quality) {
+    function __construct(string $name, int $sell_in, int $quality) {
         $this->name = $name;
         $this->sell_in = $sell_in;
         $this->quality = $quality;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }   
 
-    public function updateItem()
+    public function updateItem(): void
     {
         $this->decreaseQualityBy(1);
         $this->decreaseSellInBy(1);  
@@ -32,12 +32,12 @@ class Item {
         }
     }
 
-    public function decreaseSellInBy($sell_in = 1)
+    public function decreaseSellInBy(int $sell_in = 1): void
     {    
         $this->sell_in -= $sell_in;        
     }
 
-    public function increaseQualityBy($quality = 1)
+    public function increaseQualityBy(int $quality = 1): void
     {       
 
         if ($this->quality + $quality > MAX_QUALITY) {
@@ -48,22 +48,21 @@ class Item {
         $this->quality += $quality;     
     }
 
-    public function decreaseQualityBy($quality = 1)
+    public function decreaseQualityBy(int $quality = 1): void
     {
         
         if ($this->quality - $quality < MIN_QUALITY) {
-            $this->quality = MIN_QUALITY;
-            return;
+            $this->quality = MIN_QUALITY;           
+        }else{
+            $this->quality -= $quality;
         }
-        
-        $this->quality -= $quality;     
     }    
 
-    public function loseAllQuality(){
+    public function loseAllQuality(): void {
         $this->quality = 0;
     }
 
-    public function hasPassedOut(){
+    public function hasPassedOut(): bool{
         return $this->sell_in < 0;
     }
 
