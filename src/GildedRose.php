@@ -16,46 +16,44 @@ class GildedRose {
     }
 
     function update_quality() {
+        
         foreach ($this->items as $item) {
+                           
 
+            switch($item->getName())
+            {
+                case Item::AGED_BRIE:
+                    $item->increaseQualityBy(1);  
+                    $item->decreaseSellInBy(1);  
+                    
+                    if ($item->hasPassedOut()) {
+                        $item->increaseQualityBy(1);
+                    }
+                    break;
+                
+                case Item::BACKSTAGE_PASS:
+                    $item->increaseQualityBySellIn();   
+                   
+                    $item->decreaseSellInBy(1);  
+                    if($item->hasPassedOut()){
+                        $item->loseAllQuality(); 
+                    } 
+                    break;
+                
+                case Item::SULFURAS:
+                    break;
 
-            if ($item->name != 'Aged Brie' and $item->name != 'Backstage passes to a TAFKAL80ETC concert') {
-               
-                    if ($item->name != 'Sulfuras, Hand of Ragnaros') {
-                        $item->decreaseQualityBy(1);
+                default:
+                    $item->decreaseQualityBy(1);
+                    $item->decreaseSellInBy(1);  
+
+                    if($item->hasPassedOut()){
+                        $item->decreaseQualityBy(1); 
                     }
-               
-            } else {                
-                $item->increaseQualityBy(1);     
-                if ($item->name == 'Backstage passes to a TAFKAL80ETC concert') {
-                    if ($item->sell_in < 11) {                            
-                        $item->increaseQualityBy(1);  
-                    }
-                    if ($item->sell_in < 6) {                            
-                        $item->increaseQualityBy(1);                            
-                    }
-                }                
+                    break;
             }
+          
 
-            if ($item->name != 'Sulfuras, Hand of Ragnaros') {
-                $item->decreaseSellInBy(1);                
-            }
-
-            if ($item->hasPassedOut()) {
-                if ($item->name != 'Aged Brie') {
-                    if ($item->name != 'Backstage passes to a TAFKAL80ETC concert') {
-                       
-                            if ($item->name != 'Sulfuras, Hand of Ragnaros') {
-                                $item->decreaseQualityBy(1);                                
-                            }
-                        
-                    } else {
-                        $item->decreaseQualityBy($item->quality);
-                    }
-                } else {                    
-                    $item->increaseQualityBy(1);                   
-                }
-            }
         }
     }
 }
