@@ -2,11 +2,6 @@
 
 namespace Runroom\GildedRose;
 
-define('AGED_BRIE', 'Aged Brie');
-define('BACKSTAGE_PASS', 'Backstage passes to a TAFKAL80ETC concert');
-define('SULFURAS', 'Sulfuras, Hand of Ragnaros');
-
-
 class GildedRose {
 
     private $items;
@@ -18,11 +13,7 @@ class GildedRose {
     function update_quality() {
         
         foreach ($this->items as $item) {
-            
-           
-            $item->updateItemByType();           
-          
-
+            $item->updateItem();         
         }
     }
 }

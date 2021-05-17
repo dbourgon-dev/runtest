@@ -6,6 +6,10 @@ use PHPUnit\Framework\TestCase;
 use Runroom\GildedRose\GildedRose;
 use Runroom\GildedRose\Item;
 
+use Runroom\GildedRose\AgedBrieItem;
+use Runroom\GildedRose\BackstagePassItem;
+use Runroom\GildedRose\SulfurasItem;
+
 class GildedRoseTest extends TestCase
 {
     /**
@@ -52,7 +56,7 @@ class GildedRoseTest extends TestCase
      */
     public function agedBrieIncreasesQualityOverTime()
     {
-  		$items = [new Item('Aged Brie', 0, 5)];
+  		$items = [new AgedBrieItem('Aged Brie', 0, 5)];
 
         $gilded_rose = new GildedRose($items);
         $gilded_rose->update_quality();
@@ -65,7 +69,7 @@ class GildedRoseTest extends TestCase
      */
     public function qualityCannotBeGreaterThan50()
     {
-  		$items = [new Item('Aged Brie', 0, 50)];
+  		$items = [new AgedBrieItem('Aged Brie', 0, 50)];
 
         $gilded_rose = new GildedRose($items);
         $gilded_rose->update_quality();
@@ -78,7 +82,7 @@ class GildedRoseTest extends TestCase
      */
     public function sulfurasDoesNotChange()
     {
-  		$items = [new Item('Sulfuras, Hand of Ragnaros', 10, 10)];
+  		$items = [new SulfurasItem('Sulfuras, Hand of Ragnaros', 10, 10)];
 
         $gilded_rose = new GildedRose($items);
         $gilded_rose->update_quality();
@@ -106,7 +110,7 @@ class GildedRoseTest extends TestCase
      */
     public function backstageQualityIncreaseOverTimeWithCertainRules($sellIn, $quality, $expected)
     {
-  		$items = [new Item('Backstage passes to a TAFKAL80ETC concert', $sellIn, $quality)];
+  		$items = [new BackstagePassItem('Backstage passes to a TAFKAL80ETC concert', $sellIn, $quality)];
 
         $gilded_rose = new GildedRose($items);
         $gilded_rose->update_quality();
