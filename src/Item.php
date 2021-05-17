@@ -51,9 +51,10 @@ class Item {
         $this->quality -= $quality;     
     }
 
-    public function increaseQualityBySellIn()
+    public function increaseQualityForBackstage()
     {
         if ($this->getName() === static::BACKSTAGE_PASS) {
+            
             $this->increaseQualityBy(1);
 
             if ($this->sell_in < 11) {

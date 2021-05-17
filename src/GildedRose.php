@@ -32,7 +32,7 @@ class GildedRose {
                     break;
                 
                 case Item::BACKSTAGE_PASS:
-                    $item->increaseQualityBySellIn();   
+                    $item->increaseQualityForBackstage();   
                    
                     $item->decreaseSellInBy(1);  
                     if($item->hasPassedOut()){
