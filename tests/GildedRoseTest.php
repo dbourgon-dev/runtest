@@ -110,6 +110,9 @@ class GildedRoseTest extends TestCase
     /**
      * @dataProvider backstageRules
      * @test
+     * @param mixed $sellIn
+     * @param mixed $quality
+     * @param mixed $expected
      */
     public function backstageQualityIncreaseOverTimeWithCertainRules(int $sellIn, int $quality, int $expected): void
     {
