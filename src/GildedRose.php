@@ -26,18 +26,16 @@ class GildedRose {
                         $item->decreaseQualityBy(1);
                     }
                 }
-            } else {
-                if ($item->quality < 50) {
-                    $item->increaseQualityBy(1);     
-                    if ($item->name == 'Backstage passes to a TAFKAL80ETC concert') {
-                        if ($item->sell_in < 11) {                            
-                            $item->increaseQualityBy(1);  
-                        }
-                        if ($item->sell_in < 6) {                            
-                            $item->increaseQualityBy(1);                            
-                        }
+            } else {                
+                $item->increaseQualityBy(1);     
+                if ($item->name == 'Backstage passes to a TAFKAL80ETC concert') {
+                    if ($item->sell_in < 11) {                            
+                        $item->increaseQualityBy(1);  
                     }
-                }
+                    if ($item->sell_in < 6) {                            
+                        $item->increaseQualityBy(1);                            
+                    }
+                }                
             }
 
             if ($item->name != 'Sulfuras, Hand of Ragnaros') {
@@ -55,10 +53,8 @@ class GildedRose {
                     } else {
                         $item->decreaseQualityBy($item->quality);
                     }
-                } else {
-                    if ($item->quality < 50) {
-                        $item->increaseQualityBy(1);
-                    }
+                } else {                    
+                    $item->increaseQualityBy(1);                   
                 }
             }
         }
