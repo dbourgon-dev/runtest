@@ -2,25 +2,35 @@
 
 namespace Runroom\GildedRose;
 
+use Runroom\GildedRose\ItemName;
+
+
 define('MAX_QUALITY', 50);
 define('MIN_QUALITY', 0);
 
 class Item {
 
-    public string $name;
+    public ItemName $name;
     public int $sell_in;
     public int $quality;
 
-    function __construct(string $name, int $sell_in, int $quality) {
+    function __construct(ItemName $name, int $sell_in, int $quality) {
         $this->name = $name;
         $this->sell_in = $sell_in;
         $this->quality = $quality;
     }
 
-    public function getName(): string
-    {
-        return $this->name;
+    public function getName(): String {
+        return $this->name->value();
     }   
+    
+    public function getQuality(): int {
+        return $this->quality;
+    }
+
+    public function getSellIn(): int {
+        return $this->sell_in;
+    }
 
     public function updateItem(): void
     {
@@ -69,5 +79,7 @@ class Item {
     public function __toString() {
         return "{$this->name}, {$this->sell_in}, {$this->quality}";
     }
+
+
 
 }
