@@ -10,11 +10,11 @@ use Runroom\GildedRose\ItemQuality;
 
 class Item {
 
-    public ItemName $name;
-    public ItemSellIn $sell_in;
-    public ItemQuality $quality;
+    protected $name;
+    protected $sell_in;
+    protected $quality;
 
-    function __construct(ItemName $name, ItemSellIn $sell_in, ItemQuality $quality) {
+    public function __construct(ItemName $name, ItemSellIn $sell_in, ItemQuality $quality) {
         $this->name = $name;
         $this->sell_in = $sell_in;
         $this->quality = $quality;

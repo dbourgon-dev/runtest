@@ -62,9 +62,7 @@ class GildedRoseTest extends TestCase
   		$items = [new AgedBrieItem(new ItemName('Aged Brie'),  new ItemSellIn(0), new ItemQuality(5))];
 
         $gilded_rose = new GildedRose($items);
-        $gilded_rose->update_quality();
-
-        print_r($gilded_rose);
+        $gilded_rose->update_quality();       
 
   		$this->assertEquals(7, $items[0]->getQuality());
   	}

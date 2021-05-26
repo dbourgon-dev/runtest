@@ -4,7 +4,7 @@ namespace Runroom\GildedRose;
 
 class ItemQuality
 {
-    private int $quality;    
+    private $quality;    
     const MAX_QUALITY = 50;
     const MIN_QUALITY = 0;
 

@@ -3,13 +3,13 @@ namespace Runroom\GildedRose;
 
 class ItemName
 {
-    private String $name;
+    private $name;
 
-    public function __construct(String $name) {
+    function __construct(string $name) {
         $this->name = $name;
     }
 
-    public function value(): String {
+    public function value(): string {
         return $this->name;
     }
 

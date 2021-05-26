@@ -4,7 +4,7 @@ namespace Runroom\GildedRose;
 
 class ItemSellIn
 {
-    private int $sell_in;
+    private $sell_in;
     private const MIN_THRESHOLD = 0;
 
 
@@ -28,6 +28,6 @@ class ItemSellIn
     }
 
     public function outOfTime(){
-        return $this->value() <= self::MIN_THRESHOLD;
+        return $this->value() < self::MIN_THRESHOLD;
     }
 }

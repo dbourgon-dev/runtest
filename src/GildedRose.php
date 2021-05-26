@@ -3,10 +3,8 @@
 namespace Runroom\GildedRose;
 
 class GildedRose {
-    /**
-     * @var array<Item> $items
-     */
-    private array $items;
+    
+    private $items;
 
     /**
      * @param array<Item> $items
