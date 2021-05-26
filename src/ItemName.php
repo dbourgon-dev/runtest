@@ -5,7 +5,7 @@ class ItemName
 {
     private String $name;
 
-    function ItemName(String $name) {
+    public function __construct(String $name) {
         $this->name = $name;
     }
 

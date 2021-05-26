@@ -3,18 +3,18 @@
 namespace Runroom\GildedRose;
 
 use Runroom\GildedRose\ItemName;
+use Runroom\GildedRose\ItemSellIn;
+use Runroom\GildedRose\ItemQuality;
 
 
-define('MAX_QUALITY', 50);
-define('MIN_QUALITY', 0);
 
 class Item {
 
     public ItemName $name;
-    public int $sell_in;
-    public int $quality;
+    public ItemSellIn $sell_in;
+    public ItemQuality $quality;
 
-    function __construct(ItemName $name, int $sell_in, int $quality) {
+    function __construct(ItemName $name, ItemSellIn $sell_in, ItemQuality $quality) {
         $this->name = $name;
         $this->sell_in = $sell_in;
         $this->quality = $quality;
@@ -25,57 +25,23 @@ class Item {
     }   
     
     public function getQuality(): int {
-        return $this->quality;
+        return $this->quality->value();
     }
 
     public function getSellIn(): int {
-        return $this->sell_in;
+        return $this->sell_in->value();
     }
 
-    public function updateItem(): void
+    public function update(): void
     {
-        $this->decreaseQualityBy(1);
-        $this->decreaseSellInBy(1);  
+        $this->quality->decrease();
+        $this->sell_in->decrease();  
 
-        if($this->hasPassedOut()){
-            $this->decreaseQualityBy(1); 
+        if($this->sell_in->outOfTime()){
+            $this->quality->decrease();
         }
     }
-
-    public function decreaseSellInBy(int $sell_in = 1): void
-    {    
-        $this->sell_in -= $sell_in;        
-    }
-
-    public function increaseQualityBy(int $quality = 1): void
-    {       
-
-        if ($this->quality + $quality > MAX_QUALITY) {
-            $this->quality = MAX_QUALITY;
-            return;
-        }
-        
-        $this->quality += $quality;     
-    }
-
-    public function decreaseQualityBy(int $quality = 1): void
-    {
-        
-        if ($this->quality - $quality < MIN_QUALITY) {
-            $this->quality = MIN_QUALITY;           
-        }else{
-            $this->quality -= $quality;
-        }
-    }    
-
-    public function loseAllQuality(): void {
-        $this->quality = 0;
-    }
-
-    public function hasPassedOut(): bool{
-        return $this->sell_in < 0;
-    }
-
+ 
     public function __toString() {
         return "{$this->name}, {$this->sell_in}, {$this->quality}";
     }

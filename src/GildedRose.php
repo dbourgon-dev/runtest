@@ -18,7 +18,7 @@ class GildedRose {
     function update_quality():void  {
         
         foreach ($this->items as $item) {
-            $item->updateItem();         
+            $item->update();         
         }
     }
 }
