@@ -2,8 +2,6 @@
 namespace Runroom\GildedRose;
 
 
-
-
 class ItemQuality
 {
     private int $quality;    
