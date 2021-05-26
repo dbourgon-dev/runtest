@@ -1,7 +1,5 @@
 <?php
-
 namespace Runroom\GildedRose;
-
 
 class SulfurasItem extends Item {
 
