@@ -43,7 +43,7 @@ class Item {
     }
  
     public function __toString() {
-        return "{$this->name}, {$this->sell_in}, {$this->quality}";
+        return "{$this->name->value()}, {$this->sell_in->value()}, {$this->quality->value()}";
     }
 
 

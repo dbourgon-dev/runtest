@@ -21,10 +21,10 @@ class ItemSellIn
     }
 
     public function increase() {
-        return new  ItemSellIn($this->sell_in + 1);
+        $this->sell_in += 1;        
     }
     public function decrease() {
-        return new  ItemSellIn($this->sell_in - 1);
+        $this->sell_in -= 1;
     }
 
     public function outOfTime(){
